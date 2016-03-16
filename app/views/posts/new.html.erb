@@ -1,0 +1,25 @@
+<h1>Posts#new</h1>
+
+<div class="container">
+    <div class="details">
+      <h2>Chirp It </h2>
+      <% if @post.errors.any? %>
+        <% @post.errors.full_messages.each do |error| %>
+          <p class="alert alert-danger"><strong>Input Error: <%= error %></strong></p>
+        <% end %>
+      <% end %>
+
+      <%= simple_form_for @post do |f| %>
+
+        <div class="form-group">
+          <%= f.label :text %>
+          <%= f.text_field :text, class: "form-control" %>
+          </div>
+
+        <div class="">
+          <%= f.submit "Chirp it", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+    </div>
+</div>

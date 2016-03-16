@@ -1,12 +1,8 @@
-<%= link_to 'Chirps', posts_path %>
-<%= link_to 'Profile', users_path %>
-<%= link_to 'Chirp It', new_post_path %>
+<h1>Chirps</h1>
 
-<h2>Welcome <%= @user.username %></h2>
-
-<h1>Chirp Alert</h1>
 
 <% @posts.each do |post| %>
+ <%= link_to user_path(post.user.username)%>
       <h4><%= link_to post.text, post_path(id: post.id) %></h4>
       <h4><%= link_to post.user.username, user_path(post.user.username) %> <%= distance_of_time_in_words post.created_at, Time.now %> ago</h4>
  <% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'sign_in' => 'sessions#new', as: :sign_in
   post 'sign_in' => 'sessions#create'
   delete 'sign_in' => 'sessions#delete', as: :sign_out
@@ -6,6 +7,19 @@ Rails.application.routes.draw do
 
   get "users/new" => 'users#new', as: :sign_up
   post "users" => 'users#create', as: :users
+  get 'users' => 'users#show', as: :user
+
+  get 'users/:username/follow' => 'users#follow', as: :follow
+  get 'users/:username/unfollow' => 'users#stop_following', as: :stop_following
+  get 'users/:username/timeline' => 'users#timeline', as: :timeline
+  patch 'users/:username' => 'users#follow'
+  patch 'users/:username' => 'users#stop_following'
+
+  get 'posts' => 'posts#index', as: :posts
+  get 'posts/new' => 'posts#new', as: :new_post
+  post 'posts' => 'posts#create'
+  get 'posts/:id' => 'posts#show', as: :post
+  delete 'posts/:id' => 'posts#delete'
 
 
   root'home#index'

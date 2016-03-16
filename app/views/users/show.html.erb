@@ -1,0 +1,5 @@
+<h4><%= @user.username %></h4>
+Chirps
+<% @user.posts.each do |post| %>
+<h4><%= link_to post.text, post_path(id: post.id) %> <%= distance_of_time_in_words post.created_at, Time.now %> ago</h4>
+<% end %>
